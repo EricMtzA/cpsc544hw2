@@ -14,4 +14,13 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void sort_empty() {
+        VisualSort vs = new VisualSort();
+
+        int[] expectedArray = { };
+        int[] actualArray = vs.sort("");
+        assertArrayEquals(expectedArray, actualArray);
+    }
 }
