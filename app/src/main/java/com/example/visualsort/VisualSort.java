@@ -6,12 +6,32 @@ import java.util.Arrays;
 public class VisualSort {
 
     public int[] sort(String input) {
-        int[] initArray = new int[input.length()];
-        int[] sortedArray = new int[]{};
+        // input String = "2 1"
+        String[] parts = input.split(" ");
+
+        if (parts.length < 3) {
+            throw new IllegalArgumentException("Input must contain at least 3 numbers");
+        }
+        if (parts.length > 8) {
+            throw new IllegalArgumentException("Input must contain 8 or fewer numbers");
+        }
+
+
+        int[] initArray = new int[parts.length];
+        //int[] sortedArray = new int[]{};
         ArrayList<int[]> masterList = new ArrayList<>();
 
-        for(int i = 0; i < input.length(); i++) {
-            initArray[i] = input.charAt(i) - '0';
+        for(int i = 0; i < parts.length; i++) {
+            // "1 2 a 4"
+            // "11 2 1 3"
+            if (!parts[i].matches("\\d+")) {
+                throw new IllegalArgumentException("Input must contain only single-digit numbers");
+            }
+            if (parts[i].length() > 1) {
+                throw new IllegalArgumentException("Numbers must be single digit");
+            }
+
+            initArray[i] = Integer.parseInt(parts[i]);
         }
         masterList.add(initArray);
         // 0 1 2 3
