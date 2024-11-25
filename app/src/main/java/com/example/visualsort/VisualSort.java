@@ -7,6 +7,13 @@ public class VisualSort {
 
     public int[] sort(String input) {
         // input String = "2 1"
+        if(input == null) {
+            throw new NullPointerException("Input cannot be null");
+        }
+        if(input == ""){
+            return new int[0];
+        }
+
         String[] parts = input.split(" ");
 
         if (parts.length < 3) {
