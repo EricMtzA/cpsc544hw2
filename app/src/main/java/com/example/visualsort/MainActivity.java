@@ -7,6 +7,8 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,22 +19,28 @@ import com.example.visualsort.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private EditText editText;
+    private Button clearTextBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Ensure this points to your new main layout
 
+        EditText editText = findViewById(R.id.editTextText);
+        Button buttonClear = findViewById(R.id.buttonClear);
+
         // Floating Action Button (FAB) setup (Optional)
-        findViewById(R.id.buttonClear).setOnClickListener(new View.OnClickListener() {
+
+        // Set up the button click listener
+        buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.buttonClear)
-                        .setAction("Action", null).show();
+                // Clear the text in the EditText
+                editText.setText("");
             }
         });
         // Find the TextView by its ID
