@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class VisualSort {
 
-    public int[] sort(String input) {
+    public static int[] sort(String input) {
         // input String = "2 1"
         if(input == null) {
             throw new NullPointerException("Input cannot be null");
@@ -23,24 +23,21 @@ public class VisualSort {
             throw new IllegalArgumentException("Input must contain 8 or fewer numbers");
         }
 
-
         int[] initArray = new int[parts.length];
         //int[] sortedArray = new int[]{};
         ArrayList<int[]> masterList = new ArrayList<>();
 
         for(int i = 0; i < parts.length; i++) {
             // "1 2 a 4"
-            // "11 2 1 3"
             if (!parts[i].matches("\\d+")) {
                 throw new IllegalArgumentException("Input must contain only single-digit numbers");
             }
+            // "11 2 1 3"
             if (parts[i].length() > 1) {
                 throw new IllegalArgumentException("Numbers must be single digit");
             }
-
             initArray[i] = Integer.parseInt(parts[i]);
         }
-        masterList.add(initArray);
         // 0 1 2 3
         // 4 1 2 3 -> i=1 so j= 0 ~> i:1 & j:4
         // if array[j] > array[i]=key swap and save new array into array of arrays
@@ -56,13 +53,22 @@ public class VisualSort {
         for(int i = 1; i < initArray.length; i++){
             int j = i - 1;
             int key = initArray[i];
+            if(i == 1) {
+                masterList.add(Arrays.copyOf(initArray, initArray.length));
+            }
 
             while (j >= 0 && initArray[j] > key){
                 initArray[j + 1] = initArray[j];
                 j--;
             }
             initArray[j + 1] = key;
-            masterList.add(initArray);
+            masterList.add(Arrays.copyOf(initArray, initArray.length));
+        }
+        // Printing the contents of masterList
+        for (int i = 0; i < masterList.size(); i++) {
+            System.out.print("Array " + i + ": ");
+            int[] array = masterList.get(i);
+            System.out.println(Arrays.toString(array)); // Print the array
         }
 
         return initArray;
