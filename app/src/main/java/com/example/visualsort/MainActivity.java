@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    static final String EXP_DISPLAY_SORT_TEXT = "Welcome to Visual Sort! \n\nInput criteria: \n\n1. Numbers only, 0-9 \n2. Input should contain 3 to 8 numbers separated by a space \n\nEx. 6 5 8 9 7 4 2 3";
     private EditText editText;
     private Button clearTextBtn;
     @Override
@@ -32,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Find the TextView by its ID
-        TextView readOnlyText = findViewById(R.id.readOnlyText);
-
-        // Set text programmatically
-        readOnlyText.setText("This is dynamically updated text!");
+        TextView readOnlyText = findViewById(R.id.displaySortTextView);
     }
 
 

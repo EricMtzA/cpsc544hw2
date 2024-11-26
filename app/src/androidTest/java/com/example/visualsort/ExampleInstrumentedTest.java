@@ -36,6 +36,27 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
+    public void testNewSortButton_OnDefaultIsClickable() {
+        onView(withId(R.id.buttonNewSort)).check(matches(isClickable()));
+    }
+
+    @Test
+    public void testNewSortButton_OnDefaultIsVisible() {
+        onView(withId(R.id.buttonNewSort)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testNewSortButton_ResetsApp() {
+        onView(withId(R.id.buttonNewSort)).perform(ViewActions.click());
+
+        // Expectations:
+        // 1) userInput is cleared
+        // 2) displaySortTextView has default text
+        onView(withId(R.id.userInput)).check(matches(withText("")));
+        onView(withId(R.id.displaySortTextView)).check(matches(withText(MainActivity.EXP_DISPLAY_SORT_TEXT)));
+    }
+
+    @Test
     public void testClearButtonClearsEditText() {
         // Enter text into the EditText
         onView(withId(R.id.userInput)).perform(ViewActions.typeText("Test input"), closeSoftKeyboard());
