@@ -1,27 +1,18 @@
 package com.example.visualsort;
 
-import android.content.Context;
-
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import androidx.test.core.app.ActivityScenario;
-import static org.junit.Assert.*;
-import android.view.View;
-
 import androidx.test.espresso.action.ViewActions;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 /**
@@ -31,26 +22,28 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.visualsort", appContext.getPackageName());
-
-
-    }
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
+    public void testSortButton_OnDefaultIsClickable() {
+        onView(withId(R.id.buttonSort)).check(matches(isClickable()));
+    }
+
+    @Test
+    public void testSortButton_OnDefaultIsVisible() {
+        onView(withId(R.id.buttonSort)).check(matches(isDisplayed()));
+    }
+
+    @Test
     public void testClearButtonClearsEditText() {
         // Enter text into the EditText
-        onView(withId(R.id.editTextText)).perform(ViewActions.typeText("Test input"));
+        onView(withId(R.id.userInput)).perform(ViewActions.typeText("Test input"), closeSoftKeyboard());
 
         // Click the Clear button
         onView(withId(R.id.buttonClear)).perform(ViewActions.click());
 
         // Verify the EditText is cleared
-        onView(withId(R.id.editTextText)).check(matches(withText("")));
+        onView(withId(R.id.userInput)).check(matches(withText("")));
     }
 }
