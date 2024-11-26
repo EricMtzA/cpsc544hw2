@@ -21,7 +21,7 @@
     <!-- TextView for Read-Only Text -->
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/userInput"
         android:layout_width="266dp"
         android:layout_height="62dp"
         android:layout_marginStart="72dp"
