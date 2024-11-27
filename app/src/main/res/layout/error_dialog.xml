@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/errorConstraintLayout"
     android:layout_width="350dp"
-    android:layout_height="400dp"
-    android:background="#48E7E6E6"
-    android:backgroundTint="#FDFBFB">
+    android:layout_height="500dp"
+    android:background="#FAFDF6F6"
+    android:backgroundTint="#F8F4F4">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutDialog"
@@ -37,6 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="40dp"
+        android:background="#FBFBFB"
+        android:backgroundTint="#F8F5F5"
         android:gravity="center_horizontal"
         android:text="Input should be numbers only, and contain 3 to 8 numbers. Please try again"
         android:textColor="@color/design_default_color_primary"
@@ -61,17 +63,19 @@
         android:layout_width="113dp"
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/text_border"
         android:backgroundTint="@color/design_default_color_primary"
         android:text="Close"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/errorDesc"
-        app:layout_constraintVertical_bias="0.663" />
+        app:layout_constraintVertical_bias="0.802" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
