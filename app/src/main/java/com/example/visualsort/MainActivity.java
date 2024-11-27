@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // Ensure this points to your new main layout
 
-        EditText editText = findViewById(R.id.userInput);
+        EditText userInput = findViewById(R.id.userInput);
         Button buttonClear = findViewById(R.id.buttonClear);
+        Button buttonNewSort = findViewById(R.id.buttonNewSort);
+        TextView displaySortTextView = findViewById(R.id.displaySortTextView);
 
         // Floating Action Button (FAB) setup (Optional)
 
@@ -29,11 +31,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Clear the text in the EditText
-                editText.setText("");
+                userInput.setText("");
             }
         });
-        // Find the TextView by its ID
-        TextView readOnlyText = findViewById(R.id.displaySortTextView);
+
+        // New Sort Button
+        // Reset UI
+        buttonNewSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userInput.setText("");
+                displaySortTextView.setText(EXP_DISPLAY_SORT_TEXT);
+            }
+        });
     }
 
 
