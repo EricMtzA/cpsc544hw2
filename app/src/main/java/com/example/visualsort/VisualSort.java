@@ -5,13 +5,12 @@ import java.util.Arrays;
 
 public class VisualSort {
 
+    static ArrayList<int[]> masterList;
+
     public static int[] sort(String input) {
         // input String = "2 1"
         if(input == null) {
             throw new NullPointerException("Input cannot be null");
-        }
-        if(input == ""){
-            return new int[0];
         }
 
         String[] parts = input.split(" ");
@@ -66,11 +65,25 @@ public class VisualSort {
         }
         // Printing the contents of masterList
         for (int i = 0; i < masterList.size(); i++) {
-            System.out.print("Array " + i + ": ");
             int[] array = masterList.get(i);
-            System.out.println(Arrays.toString(array)); // Print the array
         }
 
+        setMasterList(masterList);
         return initArray;
+    }
+
+    private static void setMasterList(ArrayList<int[]> list) {
+        masterList = new ArrayList<>(list);
+    }
+
+    public static String getSortResults() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int[] m : masterList) {
+            sb.append(Arrays.toString(m));
+            sb.append("\n");
+        }
+
+        return sb.toString();
     }
 }
