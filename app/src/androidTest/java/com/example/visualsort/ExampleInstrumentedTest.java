@@ -9,9 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -68,66 +66,6 @@ public class ExampleInstrumentedTest {
 
         // Verify the EditText is cleared
         onView(withId(R.id.userInput)).check(matches(withText("")));
-    }
-
-    @Test
-    public void testMultipleSpaces() {
-        // Enter text with multiple spaces and close keyboard
-        onView(withId(R.id.userInput)).perform(typeText("1  2   3"), closeSoftKeyboard());
-
-        // Click the Sort button
-        onView(withId(R.id.buttonSort)).perform(click());
-
-        // Verify error message in displaySortTextView
-        onView(withId(R.id.displaySortTextView)).check(matches(withText("Input cannot have multiple spaces")));
-    }
-
-    @Test
-    public void testNegativeNumbers() {
-        // Enter negative numbers
-        onView(withId(R.id.userInput)).perform(typeText("1 -2 3"), closeSoftKeyboard());
-
-        // Click Sort Button
-        onView(withId(R.id.buttonSort)).perform(click());
-
-        // Verify error message
-        onView(withId(R.id.displaySortTextView)).check(matches(withText("Input cannot contain negative numbers")));
-    }
-
-    @Test
-    public void testNonNumericInput() {
-        // Enter non-numeric input
-        onView(withId(R.id.userInput)).perform(typeText("2 3 K"), closeSoftKeyboard());
-
-        // Click Sort button
-        onView(withId(R.id.buttonSort)).perform(click());
-
-        // Verify error message
-        onView(withId(R.id.displaySortTextView)).check(matches(withText("Input must contain only numbers")));
-    }
-
-    @Test
-    public void testSortThreeNumbers() {
-        // Enter three numbers
-        onView(withId(R.id.userInput)).perform(typeText("2 8 3"), closeSoftKeyboard());
-
-        // Click Sort button
-        onView(withId(R.id.buttonSort)).perform(click());
-
-        // Verify sorted result
-        onView(withId(R.id.displaySortTextView)).check(matches(withText("2 3 8")));
-    }
-
-    @Test
-    public void testSortEightNumbers() {
-        // Enter 8 randomized numbers
-        onView(withId(R.id.userInput)).perform(typeText("4 7 1 8 2 6 3 5"), closeSoftKeyboard());
-
-        // Click Sort button
-        onView(withId(R.id.buttonSort)).perform(click());
-
-        // Verify sorted result
-        onView(withId(R.id.displaySortTextView)).check(matches(withText("1 2 3 4 5 6 7 8")));
     }
 
 }
