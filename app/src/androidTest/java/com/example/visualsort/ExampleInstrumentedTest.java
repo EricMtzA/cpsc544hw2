@@ -106,4 +106,28 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.displaySortTextView)).check(matches(withText("Input must contain only numbers")));
     }
 
+    @Test
+    public void testSortThreeNumbers() {
+        // Enter three numbers
+        onView(withId(R.id.userInput)).perform(typeText("2 8 3"), closeSoftKeyboard());
+
+        // Click Sort button
+        onView(withId(R.id.buttonSort)).perform(click());
+
+        // Verify sorted result
+        onView(withId(R.id.displaySortTextView)).check(matches(withText("2 3 8")));
+    }
+
+    @Test
+    public void testSortEightNumbers() {
+        // Enter 8 randomized numbers
+        onView(withId(R.id.userInput)).perform(typeText("4 7 1 8 2 6 3 5"), closeSoftKeyboard());
+
+        // Click Sort button
+        onView(withId(R.id.buttonSort)).perform(click());
+
+        // Verify sorted result
+        onView(withId(R.id.displaySortTextView)).check(matches(withText("1 2 3 4 5 6 7 8")));
+    }
+
 }
