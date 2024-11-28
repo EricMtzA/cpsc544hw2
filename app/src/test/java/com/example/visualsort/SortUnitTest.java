@@ -22,31 +22,24 @@ import static org.junit.Assert.*;
 public class SortUnitTest {
     @Test
     public void sort_empty() {
-        VisualSort vs = new VisualSort();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> VisualSort.sort(""));
 
-        int[] expectedArray = { };
-        int[] actualArray = vs.sort("");
-
-        assertArrayEquals(expectedArray, actualArray);
+        // Verify exception message
+        assertEquals("Input must contain at least 3 numbers", exception.getMessage());
     }
 
     @Test
     public void sort_normal() {
-        VisualSort vs = new VisualSort();
-
         int[] expectedArray = { 1, 2, 3, 4, 5 };
-        int[] actualArray = vs.sort("5 4 3 2 1");
+        int[] actualArray = VisualSort.sort("5 4 3 2 1");
 
         assertArrayEquals(expectedArray, actualArray);
     }
 
     @Test
     public void sort_ThrowException_WhenInputIsNull() {
-        // Arrange
-        VisualSort vs = new VisualSort();
-
         // Act & Assert
-        Exception exception = assertThrows(NullPointerException.class, () -> vs.sort(null));
+        Exception exception = assertThrows(NullPointerException.class, () -> VisualSort.sort(null));
 
         // Verify exception message
         assertEquals("Input cannot be null", exception.getMessage());
@@ -56,10 +49,9 @@ public class SortUnitTest {
     public void sort_checkBoundaryEightNumbers() {
         // Arrange
         int[] expectedArray = { 0, 1, 2, 2, 3, 4, 7, 9 };
-        VisualSort vs = new VisualSort();
 
         // Act & Assert
-        int[] actualArray = vs.sort("4 3 7 9 2 0 1 2");
+        int[] actualArray = VisualSort.sort("4 3 7 9 2 0 1 2");
 
         // Verify array is sorted
         assertArrayEquals(expectedArray, actualArray);
@@ -67,11 +59,8 @@ public class SortUnitTest {
 
     @Test
     public void sort_ThrowException_WhenInputContainsMoreThanEightNumbers() {
-        // Arrange
-        VisualSort vs = new VisualSort();
-
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> vs.sort("1 2 3 4 5 6 7 8 9"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> VisualSort.sort("1 2 3 4 5 6 7 8 9"));
 
         // Verify exception message
         assertEquals("Input must contain 8 or fewer numbers", exception.getMessage());
@@ -81,10 +70,9 @@ public class SortUnitTest {
     public void sort_checkBoundaryThreeNumbers() {
         // Arrange
         int[] expectedArray = { 2, 5, 7 };
-        VisualSort vs = new VisualSort();
 
         // Act & Assert
-        int[] actualArray = vs.sort("5 2 7");
+        int[] actualArray = VisualSort.sort("5 2 7");
 
         // Verify array is sorted
         assertArrayEquals(expectedArray, actualArray);
@@ -92,11 +80,8 @@ public class SortUnitTest {
 
     @Test
     public void sort_ThrowException_WhenInputContainsLessThanThreeNumbers() {
-        // Arrange
-        VisualSort vs = new VisualSort();
-
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> vs.sort("4 2"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> VisualSort.sort("4 2"));
 
         // Verify exception message
         assertEquals("Input must contain at least 3 numbers", exception.getMessage());
@@ -104,11 +89,8 @@ public class SortUnitTest {
 
     @Test
     public void sort_ThrowException_WhenInputContainsNonNumbers() {
-        // Arrange
-        VisualSort vs = new VisualSort();
-
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> vs.sort("4 2 9 a 2 0"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> VisualSort.sort("4 2 9 a 2 0"));
 
         // Verify exception message
         assertEquals("Input must contain only single-digit numbers", exception.getMessage());
@@ -116,11 +98,8 @@ public class SortUnitTest {
 
     @Test
     public void sort_ThrowException_WhenNumbersAreNotSingleDigit() {
-        // Arrange
-        VisualSort vs = new VisualSort();
-
         // Act & Assert
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> vs.sort("2 8 3 87 10 3"));
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> VisualSort.sort("2 8 3 87 10 3"));
 
         // Verify exception message
         assertEquals("Numbers must be single digit", exception.getMessage());

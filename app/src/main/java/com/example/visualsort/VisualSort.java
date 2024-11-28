@@ -5,9 +5,11 @@ import java.util.Arrays;
 
 public class VisualSort {
 
+    private static String userInput;
     static ArrayList<int[]> masterList;
 
     public static int[] sort(String input) {
+        userInput = input;
         // input String = "2 1"
         if(input == null) {
             throw new NullPointerException("Input cannot be null");
@@ -79,8 +81,11 @@ public class VisualSort {
     public static String getSortResults() {
         StringBuilder sb = new StringBuilder();
 
+        sb.append(String.format("Input array: %s\n", userInput));
+        sb.append("Insertion Sort\n(Intermediate Steps)\n\n");
+
         for (int[] m : masterList) {
-            sb.append(Arrays.toString(m));
+            sb.append(Arrays.toString(m).replaceAll("[\\[,\\]]", ""));
             sb.append("\n");
         }
 

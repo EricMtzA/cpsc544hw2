@@ -37,8 +37,8 @@
         android:id="@+id/buttonClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginEnd="56dp"
         android:text="Clear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,11 +80,13 @@
         android:id="@+id/buttonNewSort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="154dp"
         android:layout_marginEnd="232dp"
         android:text="New Sort"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,7 @@ import android.view.LayoutInflater;
 
 public class MainActivity extends AppCompatActivity {
     static final String EXP_DISPLAY_SORT_TEXT = "Welcome to Visual Sort! \n\nInput criteria: \n\n1. Numbers only, 0-9 \n2. Input should contain 3 to 8 numbers separated by a space \n\nEx. 6 5 8 9 7 4 2 3";
-    private EditText editText;
-    private Button clearTextBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         buttonSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hello");
                 String userInputValue = String.valueOf(userInput.getText());
 
                 try {
@@ -96,6 +94,4 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialog.show();
     }
-
-
 }
