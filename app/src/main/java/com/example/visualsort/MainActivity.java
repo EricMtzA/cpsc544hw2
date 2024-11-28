@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userInputValue = String.valueOf(userInput.getText());
+                String userInputValue = String.valueOf(userInput.getText()).replaceAll("\\s{2,}", " ");
 
                 try {
                     VisualSort.sort(userInputValue);
